@@ -1,0 +1,49 @@
+<template name="processDetails">
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-6 process-title'>
+            {{name}}
+        </div>
+        <div class='col-md-2 process-category'>
+             {{#if isAdmin}}
+            <select class='form-control process-detail-header' id='category'>
+                {{#each categories}} {{> categorySelect}} {{/each}}
+            </select>
+            {{else}}
+            <span class="label label-category label-primary">{{categoryName}}</span>
+            {{/if}}
+        </div>
+       <!--  {{#if isAdmin}}
+        <div class='col-md-2 process-category'>
+            <button id='switch-mode' class='btn btn-primary'>View Mode</button>
+        </div>
+        {{/if}} -->
+    </div>
+    {{#if isAdmin}}
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <input class='form-control' id='step-name'>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <div id='step-content'></div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <select class='form-control' id='step-video'></select>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <button class='btn btn-primary btn-block' id='create-step'>Add Step</button>
+        </div>
+    </div>
+    {{/if}} {{#each steps}} {{> step}} {{/each}}
+    <div class='voffset30'></div>
+</template>

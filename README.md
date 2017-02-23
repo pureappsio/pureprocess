@@ -1,2 +1,2 @@
 # pureprocess
-Process creation &amp; task management software
+Process creation and task management software

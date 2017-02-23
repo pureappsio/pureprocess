@@ -1,0 +1,27 @@
+<template name="step">
+    <div class='row step-row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-1 step-order'>
+            {{order}}
+        </div>
+        <div class='col-md-7'>
+            <div class='step-title'>{{name}}</div>
+            {{#if isAdmin}}
+            <div id='step-content-{{_id}}'>{{{content}}}</div>
+            <button class='btn btn-primary btn-block edit'>Save Step</button>
+            {{else}}
+            <div class='step-content'>{{{content}}}</div>
+            {{/if}}
+            {{#if videoUrl}}
+            <video id='video-step-{{_id}}' class="video-js vjs-16-9 vjs-big-play-centered" preload="auto" controls>
+                <source src="{{videoUrl}}" type="video/mp4" />
+            </video>
+            {{/if}}
+        </div>
+        {{#if isAdmin}}
+        <div class='col-md-1'>
+            <button class='btn btn-danger step-delete'>X</button>
+        </div>
+        {{/if}}
+    </div>
+</template>

@@ -1,0 +1,44 @@
+<template name="tasks">
+    <h3>Tasks</h3> {{#if isAdmin}}
+    <div class='row'>
+        <div class='col-md-3'>
+            <input class='form-control' id='task-name'>
+        </div>
+        <div class='col-md-2'>
+            <select class='form-control' id='task-process'>
+                <option value='no'>No Process</option>
+                {{#each processes}} {{> processSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-3'>
+            <select class='form-control' id='task-user'>
+                {{#each users}} {{> userSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <div class="input-group datetimepicker">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input id='task-date' value='{{timer.date}}' class="set-due-date form-control" type="text" />
+            </div>
+        </div>
+        <div class='col-md-2'>
+            <button class='btn btn-primary btn-block' id='create-task'>Create Task</button>
+        </div>
+    </div>
+    <div class='row col-title'>
+        <div class='col-md-3'>
+            Task Name
+        </div>
+        <div class='col-md-3'>
+            Process Name
+        </div>
+        <div class='col-md-2'>
+            Deadline
+        </div>
+        <div class='col-md-3'>
+            Assigned To
+        </div>
+    </div>
+    {{/if}} {{#each tasks}} {{> task}} {{/each}}
+    {{#each completedTasks}} {{> task}} {{/each}}
+</template>

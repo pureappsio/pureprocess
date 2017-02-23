@@ -1,0 +1,18 @@
+<template name="procedures">
+    <h2>Processes</h2> {{#if isAdmin}}
+    <div class='row'>
+        <div class='col-md-4'>
+            <input class='form-control' id='process-name'>
+        </div>
+        <div class='col-md-2'>
+            <select class='form-control' id='category'>
+                {{#each categories}} {{> categorySelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <button class='btn btn-primary btn-block' id='create-process'>Create Process</button>
+        </div>
+    </div>
+    {{/if}} {{#each categories}} {{> categoryProcesses}} {{/each}}
+    {{#each processes}} {{> procedure}} {{/each}}
+</template>

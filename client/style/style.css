@@ -1,0 +1,112 @@
+/* CSS declarations go here */
+
+.row {
+    margin-top: 15px;
+    vertical-align: middle;
+}
+
+.process-detail-header {
+    vertical-align: bottom;
+}
+
+.col-title {
+    font-weight: bold;
+}
+
+body {
+    font-size: 20px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+}
+
+.step-row {
+    margin-left: 0px;
+}
+
+.process {
+    font-size: 26px;
+}
+
+.process-title {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.process-category {
+    margin-top: 15px;
+}
+
+.label-category {
+    font-size: 20px;
+}
+
+.task-name {
+    margin-left: 10px;
+    display: inline;
+}
+
+.completed-task {
+    color: lightgray;
+}
+
+.completed-task a {
+    color: lightgray;
+}
+
+.completed-task .check-task {
+    border: 2px solid lightgray;
+}
+
+.completed-task .check-task:hover  {
+    border: 2px solid lightgray;
+    cursor: default;
+    color: lightgray;
+}
+
+.check-task {
+
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid black;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    display: inline-block;
+
+}
+
+.check-task:hover {
+    color: green;
+    cursor: pointer;
+    border: 2px solid green;
+}
+
+.step-order {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    background: #000
+}
+
+.step-title {
+    margin-top: -5px;
+    font-size: 30px;
+}
+
+.step-content {
+    margin-top: 10px;
+    color: gray;
+}
+
+.voffset30 {
+    margin-top: 30px;
+}
