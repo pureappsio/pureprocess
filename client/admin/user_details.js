@@ -1,4 +1,4 @@
-Template.userSelect.helpers({
+Template.userDetails.helpers({
 
     email: function() {
 

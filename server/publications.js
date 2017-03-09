@@ -14,6 +14,10 @@ Meteor.publish("userCategories", function() {
     return Categories.find({});
 });
 
+Meteor.publish("userDomains", function() {
+    return Domains.find({});
+});
+
 Meteor.publish("allUsers", function() {
     return Meteor.users.find({});
 });
@@ -24,4 +28,8 @@ Meteor.publish("userIntegrations", function() {
 
 Meteor.publish("userData", function() {
     return Meteor.users.find({ _id: this.userId }, { services: 1 });
+});
+
+Meteor.publish('allFiles', function() {
+    return Files.find().cursor;
 });

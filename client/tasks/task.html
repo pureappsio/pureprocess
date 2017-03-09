@@ -1,9 +1,9 @@
 <template name="task">
     <div class='row {{completedColor}}'>
-        <div class='col-md-3'>
-            <div class='check-task'><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </div> <div class='task-name'>{{name}}</div>
+        <div class='col-md-5'>
+            <div class='check-task'><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </div> <div class='task-name'><a href='/tasks/{{_id}}'>{{name}}</a></div>
         </div>
-        <div class='col-md-3'>
+        <div class='col-md-2'>
             {{#if processId}} 
             <a href='/processes/{{processId}}'>{{processName}}</a>
             {{/if}}
@@ -11,7 +11,7 @@
         <div class='col-md-2'>
             {{deadlineDate}}
         </div>
-        <div class='col-md-3'>
+        <div class='col-md-2'>
             {{assignedTo}}
         </div>
         {{#if isAdmin}}

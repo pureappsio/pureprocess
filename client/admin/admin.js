@@ -19,6 +19,11 @@ Template.admin.events({
         });
 
     },
+    'click #set-user-name': function() {
+
+        Meteor.call('setUsername', $('#user-name').val(), $('#user-id :selected').val());
+
+    },
     'click #set-operator': function() {
         Meteor.call('setOperator', $('#operator :selected').val());
     },

@@ -1,9 +1,15 @@
-Template.task.helpers({
+Template.taskDetails.helpers({
 
     processName: function() {
         if (this.processId) {
             return Procedures.findOne(this.processId).name;
         }
+    },
+    fileLink: function() {
+        return Files.findOne(this.attachementId).link();
+    },
+    steps: function() {
+        return Steps.find({ processId: this.processId });
     },
     deadlineDate: function() {
         return moment(this.deadline).format('MMMM Do YYYY');
@@ -24,7 +30,7 @@ Template.task.helpers({
         if (this.status == 'completed') {
             return 'completed-task';
         } else {
-            
+
             // Check if late 
             var now = new Date();
             var diff = now.getTime() - (this.deadline).getTime();
@@ -46,12 +52,12 @@ Template.task.helpers({
 
 });
 
-Template.task.events({
+Template.taskDetails.events({
 
     'click .task-delete': function() {
         Meteor.call('deleteTask', this._id);
     },
-    'click .check-task': function() {
+    'click .task-check': function() {
         Meteor.call('completeTask', this._id);
     }
 

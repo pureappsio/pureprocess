@@ -1,0 +1,15 @@
+<template name="domains">
+    <h3>Domains</h3>
+    <div class='row'>
+        <div class='col-md-3'>
+            <input class='form-control' id='domain-name' placeholder="Name ...">
+        </div>
+        <div class='col-md-3'>
+            <input class='form-control' id='domain-url' placeholder="Url ...">
+        </div>
+        <div class='col-md-3'>
+            <button id='create-domain' class='btn btn-primary btn-block'>Create Domain</button>
+        </div>
+    </div>
+    {{#each domains}} {{> domain}} {{/each}}
+</template>

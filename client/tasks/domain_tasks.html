@@ -1,0 +1,23 @@
+<template name="domainTasks">
+	<h3>{{name}}</h3>
+    <div class='row col-title'>
+        <div class='col-md-5'>
+            Task Name
+        </div>
+        <div class='col-md-2'>
+            Process Name
+        </div>
+        <div class='col-md-2'>
+            Deadline
+        </div>
+        <div class='col-md-2'>
+            Assigned To
+        </div>
+    </div>
+    {{#each tasks}} {{> task}} {{/each}} 
+
+    {{#if isAdmin}}
+    	{{#each completedTasks}} {{> task}} {{/each}}
+    {{/if}}
+
+</template>

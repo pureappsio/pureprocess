@@ -1,0 +1,17 @@
+<template name="stepTask">
+    <div class='row step-row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-1 step-order'>
+            {{order}}
+        </div>
+        <div class='col-md-7'>
+            <div class='step-title'>{{name}}</div>
+            <div class='step-content'>{{{content}}}</div>
+            {{#if videoUrl}}
+            <video id='video-step-{{_id}}' class="video-js vjs-16-9 vjs-big-play-centered" preload="auto" controls>
+                <source src="{{videoUrl}}" type="video/mp4" />
+            </video>
+            {{/if}}
+        </div>
+    </div>
+</template>

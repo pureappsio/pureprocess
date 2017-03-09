@@ -1,0 +1,12 @@
+<template name="settings">
+    <h3>Settings</h3> {{#if currentUser}}
+    <div class='row'>
+        <div class='col-md-3'>
+            <input class='form-control' id='user-name' placeholder="User name ..." value='{{userName}}'>
+        </div>
+        <div class='col-md-2'>
+            <button id='set-username' class='btn btn-block btn-primary'>Set User Name</button>
+        </div>
+    </div>
+    {{/if}}
+</template>

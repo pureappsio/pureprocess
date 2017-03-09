@@ -1,7 +1,12 @@
 <template name="tasks">
     <h3>Tasks</h3> {{#if isAdmin}}
     <div class='row'>
-        <div class='col-md-3'>
+        <div class='col-md-2'>
+            <select class='form-control' id='domain-id'>
+                {{#each domains}} {{> domainSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
             <input class='form-control' id='task-name'>
         </div>
         <div class='col-md-2'>
@@ -10,7 +15,7 @@
                 {{#each processes}} {{> processSelect}} {{/each}}
             </select>
         </div>
-        <div class='col-md-3'>
+        <div class='col-md-2'>
             <select class='form-control' id='task-user'>
                 {{#each users}} {{> userSelect}} {{/each}}
             </select>
@@ -22,23 +27,14 @@
             </div>
         </div>
         <div class='col-md-2'>
+            {{> uploadForm fileId="attachementId"}}
+        </div>
+    </div>
+    <div class='row'>
+    <div class='col-md-3'></div>
+        <div class='col-md-6'>
             <button class='btn btn-primary btn-block' id='create-task'>Create Task</button>
         </div>
     </div>
-    <div class='row col-title'>
-        <div class='col-md-3'>
-            Task Name
-        </div>
-        <div class='col-md-3'>
-            Process Name
-        </div>
-        <div class='col-md-2'>
-            Deadline
-        </div>
-        <div class='col-md-3'>
-            Assigned To
-        </div>
-    </div>
-    {{/if}} {{#each tasks}} {{> task}} {{/each}}
-    {{#each completedTasks}} {{> task}} {{/each}}
+    {{/if}} {{#each domains}} {{> domainTasks}} {{/each}}
 </template>

@@ -22,11 +22,13 @@
                 <ul class="nav navbar-nav navbar-right login">
                     {{> loginButtons}}
                 </ul>
-                {{#if isAdmin}}
                 <ul class="nav navbar-nav navbar-right">
+                    {{#if currentUser}}
+                    <li><a href="{{pathFor 'settings'}}">Settings</a></li>
+                    {{/if}} {{#if isAdmin}}
                     <li><a href="{{pathFor 'admin'}}">Admin</a></li>
+                    {{/if}}
                 </ul>
-                {{/if}}
             </div>
             <!-- /.navbar-collapse -->
         </div>

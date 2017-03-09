@@ -1,0 +1,42 @@
+<template name="taskDetails">
+    <div class='row'>
+        <div class='col-md-3'></div>
+        <div class='col-md-6 task-details-name'>
+            {{name}}
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-3'>
+            Deadline: {{deadlineDate}}
+        </div>
+        <div class='col-md-3'>
+            Assigned to: {{assignedTo}}
+        </div>
+        <div class='col-md-3'>
+            Status: {{status}}
+        </div>
+        <!-- <div class='col-md-3'>
+            {{#if processId}} Process: <a href='/processes/{{processId}}'>{{processName}}</a> {{/if}}
+        </div> -->
+    </div>
+    {{#if attachementId}}
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            Attachement: <a href='{{fileLink}}'>Click to download the attached file</a>
+        </div>
+    </div>
+    {{/if}} 
+    {{#if processId}} {{#each steps}} {{> stepTask}} {{/each}} {{/if}}
+    <div class='row'>
+        <div class='col-md-3'></div>
+        <div class='col-md-3'>
+            <a href='/tasks' class='btn btn-block btn-primary'>Come Back</a>
+        </div>
+        <div class='col-md-3'>
+            <button class='btn btn-block  btn-warning task-check'>Mark as Completed</button>
+        </div>
+    </div>
+    <div class='voffset30'></div>
+</template>

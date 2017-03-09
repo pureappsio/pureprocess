@@ -16,12 +16,18 @@ Template.tasks.events({
             creationDate: new Date(),
             assignedId: $('#task-user :selected').val(),
             userId: Meteor.user()._id,
-            status: 'new'
+            status: 'new',
+            domainId: $('#domain-id :selected').val()
         }
 
         // Process?
         if ($('#task-process :selected').val() != 'no') {
             task.processId = $('#task-process :selected').val();
+        }
+
+        // Attachement?
+        if (Session.get('attachementId')) {
+            task.attachementId = Session.get('attachementId');
         }
 
         Meteor.call('createTask', task);
@@ -34,14 +40,11 @@ Template.tasks.helpers({
     processes: function() {
         return Procedures.find({});
     },
+    domains: function() {
+        return Domains.find({});
+    },
     users: function() {
         return Meteor.users.find({});
-    },
-    tasks: function() {
-    	return Tasks.find({status: 'new'}, {sort: {date: 1}});
-    },
-    completedTasks: function() {
-    	return Tasks.find({status: 'completed'}, {sort: {date: 1}});
     }
 
 });

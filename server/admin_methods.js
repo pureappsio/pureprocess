@@ -1,5 +1,23 @@
 Meteor.methods({
 
+    setUsername: function(userName, userId) {
+
+        console.log(userName);
+        console.log(userId);
+        Meteor.users.update(userId, { $set: { userName: userName } });
+
+
+    },
+    createDomain: function(domain) {
+
+        console.log(domain);
+
+        Domains.insert(domain);
+
+    },
+    deleteDomain: function(domainId) {
+        Domains.remove(domainId);
+    },
     addCategory: function(category) {
 
         console.log(category);
@@ -8,7 +26,7 @@ Meteor.methods({
     },
     setOperator: function(userId) {
 
-        Meteor.users.update(userId, {$set: {role: 'operator'}});
+        Meteor.users.update(userId, { $set: { role: 'operator' } });
 
     },
     validateApiKey: function(user, key) {
