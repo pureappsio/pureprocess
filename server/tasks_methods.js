@@ -1,6 +1,6 @@
 Meteor.methods({
 
-    createTask: function(task) {
+    createTask: function(task) {        
 
         // Create task
         console.log(task);

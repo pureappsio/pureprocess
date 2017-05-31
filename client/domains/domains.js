@@ -16,6 +16,10 @@ Template.domains.events({
         }
 
         Meteor.call('createDomain', domain);
+    },
+    'click #set-colors': function() {
+        
+        Meteor.call('setColors');
     }
 
 });

@@ -14,6 +14,10 @@ Meteor.publish("userCategories", function() {
     return Categories.find({});
 });
 
+Meteor.publish("userContent", function() {
+    return Content.find({});
+});
+
 Meteor.publish("userDomains", function() {
     return Domains.find({});
 });

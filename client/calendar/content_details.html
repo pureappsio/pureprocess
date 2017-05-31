@@ -1,0 +1,32 @@
+<template name="contentDetails">
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8 col-center'>
+            <h3>{{title}}</h3>
+        </div>
+        <div class='col-md-1'>
+            <h3><i class="fa fa-{{icon}}" aria-hidden="true"></i></h3> </div>
+    </div>
+    <div class='row voffset30'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            {{> taskCreation}}
+        </div>
+    </div>
+    <div class='row voffset30'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            Tasks
+            {{#each tasks}} {{> task}} {{/each}}
+        </div>
+    </div>
+    <div class='row voffset30'>
+        <div class='col-md-2'></div>
+        <div class='col-md-4'>
+            <a href='/calendar' class="btn btn-block btn-primary">Come Back</a>
+        </div>
+        <div class='col-md-4'>
+            <button id='delete-content' class="btn btn-block btn-danger">Delete</button>
+        </div>
+    </div>
+</template>

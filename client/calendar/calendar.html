@@ -1,0 +1,31 @@
+<template name="calendar">
+    <div class='row'>
+        <div class='col-md-4'>
+            <input class="form-control" id='content-name' placeholder="New content name ...">
+        </div>
+         <div class='col-md-2'>
+            <select class='form-control' id='content-domain'>
+                {{#each domains}} {{> domainSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <select class="form-control" id='content-type'>
+                <option value='article'>Article</option>
+                <option value='video'>Video</option>
+                <option value='podcast'>Podcast</option>
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <div class="input-group datetimepicker">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input id='content-date' class="form-control" type="text" />
+            </div>
+        </div>
+        <div class='col-md-2'>
+            <button class='btn btn-block btn-primary' id='create-content'>Add</button>
+        </div>
+    </div>
+    <div class='row'>
+        {{#each calendarTitle}} {{> calendarElementTitle}} {{/each}} {{#each calendarElements}} {{> calendarElement}} {{/each}}
+    </div>
+</template>

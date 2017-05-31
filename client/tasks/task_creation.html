@@ -1,0 +1,40 @@
+<template name="taskCreation">
+    <div class='row'>
+        <div class='col-md-2'>
+            {{#if domainDefined}} <span style='background-color: {{domainColor}} !important;' class="label label-default">{{domainDefined}}</span> {{else}}
+            <select class='form-control' id='domain-id'>
+                {{#each domains}} {{> domainSelect}} {{/each}}
+            </select>
+            {{/if}}
+        </div>
+        <div class='col-md-2'>
+            <input class='form-control' id='task-name'>
+        </div>
+        <div class='col-md-2'>
+            <select class='form-control' id='task-process'>
+                <option value='no'>No Process</option>
+                {{#each processes}} {{> processSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <select class='form-control' id='task-user'>
+                {{#each users}} {{> userSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <div class="input-group datetimepicker">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input id='task-date' value='{{timer.date}}' class="set-due-date form-control" type="text" />
+            </div>
+        </div>
+        <div class='col-md-2'>
+            {{> uploadForm fileId="attachementId"}}
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-3'></div>
+        <div class='col-md-6'>
+            <button class='btn btn-primary btn-block' id='create-task'>Create Task</button>
+        </div>
+    </div>
+</template>

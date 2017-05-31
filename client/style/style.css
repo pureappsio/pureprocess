@@ -1,5 +1,9 @@
 /* CSS declarations go here */
 
+.col-center {
+    text-align: center;
+}
+
 .voffset50 {
     margin-top: 50px;
 }
@@ -8,6 +12,71 @@
     margin-top: 30px;
 }
 
+.fa-delete {
+    color: gray;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.fa-delete:hover {
+    color: red;
+}
+
+.calendar-container {
+   height: 175px;
+   border-right: 1px solid black;
+   border-bottom: 1px solid black;
+   padding: 0;
+   margin: 0;
+}
+
+.calendar-container-title {
+   height: 50px;
+   border-right: 1px solid black;
+   border-bottom: 1px solid black;
+   border-top: 1px solid black;
+   padding: 2px;
+   padding-left: 5px;
+   margin: 0;
+}
+
+.calendar-title {
+    font-size: 20px;
+    margin-top: 6px;
+}
+
+.calendar-number {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.calendar-content {
+    margin-top: 5px;
+    padding: 5px;
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+.background-video {
+    background-color: #ffe6e6;
+}
+
+.background-article {
+    background-color: #e6f2ff;
+}
+
+.background-podcast {
+    background-color: #e6ffe6;
+}
+
+.calendar-content-name {
+    font-size: 16px;
+}
+
+.calendar-content-description {
+    font-size: 16px;
+}
 
 .row {
     margin-top: 15px;

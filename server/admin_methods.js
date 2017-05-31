@@ -1,5 +1,44 @@
+var colorList = [
+
+    '#ff9933',
+    '#0066ff',
+    '#009900',
+    '#6600cc',
+    '#cc0099',
+    '#ff0000',
+    '#663300',
+    '#ff9933',
+    '#0066ff',
+    '#009900',
+    '#6600cc',
+    '#cc0099',
+    '#ff0000',
+    '#663300'
+
+];
+
 Meteor.methods({
 
+    setColors: function() {
+
+        var domains = Domains.find({}).fetch();
+
+        for (i in domains) {
+
+            var color = colorList[i];
+            Domains.update(domains[i]._id, { $set: { color: color } });
+
+        }
+
+    },
+    getRandomColor: function() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    },
     setUsername: function(userName, userId) {
 
         console.log(userName);
@@ -10,6 +49,10 @@ Meteor.methods({
     },
     createDomain: function(domain) {
 
+        // Get color
+        var length = Domains.find({}).count();
+        domain.color = colorList[length];
+        
         console.log(domain);
 
         Domains.insert(domain);

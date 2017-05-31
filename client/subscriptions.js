@@ -4,7 +4,7 @@ Tracker.autorun(function() {
     Meteor.subscribe('userSteps');
     Meteor.subscribe('userTasks');
     Meteor.subscribe('userCategories');
-
+    Meteor.subscribe('userContent');
     Meteor.subscribe('userDomains');
 
     Meteor.subscribe('userData');
