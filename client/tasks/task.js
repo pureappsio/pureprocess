@@ -5,26 +5,43 @@ Template.task.helpers({
             return Procedures.findOne(this.processId).name;
         }
     },
+   
     deadlineDate: function() {
         return moment(this.deadline).format('MMMM Do YYYY');
     },
+    assignedPic: function() {
+
+        if (this.assignedId) {
+            var user = Meteor.users.findOne(this.assignedId);
+
+            if (user.pictureId) {
+                return Files.findOne(user.pictureId).link();
+
+            }
+        }
+    },
     assignedTo: function() {
 
-        var user = Meteor.users.findOne(this.assignedId);
+        if (this.assignedId) {
+            var user = Meteor.users.findOne(this.assignedId);
 
-        if (user.userName) {
-            return user.userName;
+            if (user.userName) {
+                return user.userName;
 
+            } else {
+                return user.emails[0].address;
+            }
         } else {
-            return user.emails[0].address;
+            return 'Not assigned';
         }
+
     },
     completedColor: function() {
 
         if (this.status == 'completed') {
             return 'completed-task';
         } else {
-            
+
             // Check if late 
             var now = new Date();
             var diff = now.getTime() - (this.deadline).getTime();

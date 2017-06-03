@@ -1,15 +1,21 @@
 Template.calendar.events({
 
-    'click #create-content': function(){
+    'click #create-content': function() {
 
-    	var content = {
-    		title: $('#content-name').val(),
-    		date: new Date($('#content-date').val()),
-    		type: $('#content-type :selected').val(),
-    		domain: $('#content-domain :selected').val()
-    	}
+        var content = {
+            title: $('#content-name').val(),
+            date: new Date($('#content-date').val()),
+            type: $('#content-type :selected').val(),
+            domain: $('#content-domain :selected').val(),
+            status: 'scheduled'
+        }
 
-    	Meteor.call('createContent', content);
+        Meteor.call('createContent', content);
+
+    },
+    'change #calendar-view': function() {
+
+        Session.set('calendarView', $('#calendar-view :selected').val());
 
     }
 
@@ -17,7 +23,7 @@ Template.calendar.events({
 
 Template.calendar.helpers({
 
-	domains: function() {
+    domains: function() {
         return Domains.find({});
     },
 
@@ -39,18 +45,30 @@ Template.calendar.helpers({
         var elements = [];
         var now = new Date();
 
+        // Get offset
+        var offset = now.getDay() - 1;
+
         // Generate days
-        for (i = -12; i < 12; i++) {
+        for (i = -7; i < 21; i++) {
 
-            calendarDate = new Date(now.getTime() + i * 24 * 3600 * 1000);
+            calendarDate = new Date(now.getTime() + (i - offset) * 24 * 3600 * 1000);
 
-            // Push
-            elements.push({
-                date: calendarDate
-            });
+            // Push while skipping Sundays
+            if (calendarDate.getDay() != 0) {
+                elements.push({
+                    date: calendarDate
+                });
+            }
+
         }
 
-        console.log(elements);
+        // Group by 6
+        // var elementsGroups = [];
+        // for (j = 0; j < elements.length / 6; j++) {
+        //     elementsGroups.push(elements.slice(j * 6, 6 * (j + 1)));
+        // }
+
+        // console.log(elementsGroups);
 
         return elements;
 
@@ -59,6 +77,8 @@ Template.calendar.helpers({
 });
 
 Template.calendar.onRendered(function() {
+
+    Session.set('calendarView', 'all');
 
     // Countdown
     $('.datetimepicker').datetimepicker();

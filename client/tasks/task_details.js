@@ -1,9 +1,44 @@
+Template.taskDetails.onRendered(function() {
+
+    if (this.data) {
+
+        taskId = this.data._id;
+        deadline = this.data.deadline;
+
+        // Countdown
+        $('.datetimepicker').datetimepicker({
+            defaultDate: deadline
+        }).on('dp.change', function(e) {
+            var date = e.date;
+            date = (e.date).toDate();
+            Meteor.call('changeTaskDate', date, taskId);
+        });
+
+        if (this.data.assignedId) {
+            $('#assigned-id').val(this.data.assignedId);
+        }
+
+    }
+
+});
+
 Template.taskDetails.helpers({
+
+    users: function() {
+        return Meteor.users.find({});
+    },
 
     processName: function() {
         if (this.processId) {
             return Procedures.findOne(this.processId).name;
         }
+    },
+    contentName: function() {
+
+        if (this.contentId) {
+            return '(' + Content.findOne(this.contentId).title + ')';
+        }
+
     },
     fileLink: function() {
         return Files.findOne(this.attachementId).link();
@@ -18,12 +53,15 @@ Template.taskDetails.helpers({
 
         var user = Meteor.users.findOne(this.assignedId);
 
-        if (user.userName) {
-            return user.userName;
+        if (user) {
+            if (user.userName) {
+                return user.userName;
 
-        } else {
-            return user.emails[0].address;
+            } else {
+                return user.emails[0].address;
+            }
         }
+
     },
     completedColor: function() {
 
@@ -54,6 +92,11 @@ Template.taskDetails.helpers({
 
 Template.taskDetails.events({
 
+    'change #assigned-id': function() {
+
+        Meteor.call('changeTaskOwner', this._id, $('#assigned-id :selected').val());
+
+    },
     'click .task-delete': function() {
         Meteor.call('deleteTask', this._id);
     },

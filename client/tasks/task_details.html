@@ -2,16 +2,24 @@
     <div class='row'>
         <div class='col-md-3'></div>
         <div class='col-md-6 task-details-name'>
-            {{name}}
+            {{name}} {{contentName}}
         </div>
     </div>
     <div class='row'>
         <div class='col-md-2'></div>
         <div class='col-md-3'>
-            Deadline: {{deadlineDate}}
+            <div class="input-group datetimepicker">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input id='task-date' class="set-due-date form-control" type="text" />
+            </div>
         </div>
-        <div class='col-md-3'>
-            Assigned to: {{assignedTo}}
+        <div class='col-md-1'>
+            Assigned to:
+        </div>
+        <div class='col-md-2'>
+            <select class='form-control' id='assigned-id'>
+                {{#each users}} {{> userSelect}} {{/each}}
+            </select>
         </div>
         <div class='col-md-3'>
             Status: {{status}}
@@ -27,8 +35,9 @@
             Attachement: <a href='{{fileLink}}'>Click to download the attached file</a>
         </div>
     </div>
-    {{/if}} 
-    {{#if processId}} {{#each steps}} {{> stepTask}} {{/each}} {{/if}}
+    {{/if}} {{#if processId}}
+    <div class='voffset30'></div>
+    {{#each steps}} {{> stepTask}} {{/each}} {{/if}}
     <div class='row'>
         <div class='col-md-3'></div>
         <div class='col-md-3'>

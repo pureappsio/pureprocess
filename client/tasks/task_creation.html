@@ -24,11 +24,16 @@
         <div class='col-md-2'>
             <div class="input-group datetimepicker">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                <input id='task-date' value='{{timer.date}}' class="set-due-date form-control" type="text" />
+                <input id='task-date' class="set-due-date form-control" type="text" />
             </div>
         </div>
         <div class='col-md-2'>
-            {{> uploadForm fileId="attachementId"}}
+            <!-- {{> uploadForm fileId="attachementId"}} -->
+            <select class='form-control' id='task-repeat'>
+                <option value='no'>Never Repeat</option>
+                <option value='day'>Repeat Every Day</option>
+                <option value='7days'>Repeat Every 7 Days</option>
+            </select>
         </div>
     </div>
     <div class='row'>

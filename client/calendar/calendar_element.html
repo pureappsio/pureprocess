@@ -2,5 +2,9 @@
     <div class='col-md-2 calendar-container'>
     	<div class='calendar-number'>{{number}}</div>
     	{{#each content}} {{> contentCalendar}} {{/each}}
+
+    	{{#if showTasks}}
+    		{{#each generalTasks}} {{> taskCalendar}} {{/each}}
+    	{{/if}}
     </div>
 </template>

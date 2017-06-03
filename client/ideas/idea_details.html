@@ -1,0 +1,27 @@
+<template name="ideaDetails">
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8 col-center'>
+            <h3>{{title}}</h3>
+        </div>
+    </div>
+    {{#each notes}} {{> note}} {{/each}}
+    <div class='row voffset50'>
+        <div class='col-md-3'></div>
+        <div class='col-md-6'>
+            <textarea class="form-control" id='note-content'></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-md-3'></div>
+        <div class='col-md-6'>
+            <button class='btn btn-block btn-primary' id='add-note'>Add Note</button>
+        </div>
+    </div>
+    <div class="row voffset30">
+        <div class='col-md-3'></div>
+        <div class='col-md-6'>
+            <a href='/ideas' class='btn btn-block btn-primary' id='add-note'>Come Back</a>
+        </div>
+    </div>
+</template>

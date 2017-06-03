@@ -1,10 +1,23 @@
 Meteor.methods({
 
-    createTask: function(task) {        
+    changeTaskOwner: function(taskId, assignedId) {
 
-        // Create task
-        console.log(task);
-        var taskId = Tasks.insert(task);
+        // Change
+        Tasks.update(taskId, { $set: { assignedId: assignedId } });
+
+        // Send email
+        Meteor.call('sendTaskEmail', taskId);
+
+    },
+    changeTaskDate: function(date, taskId) {
+
+        Tasks.update(taskId, { $set: { deadline: date } });
+
+    },
+    sendTaskEmail: function(taskId) {
+
+        // Get task
+        var task = Tasks.findOne(taskId);
 
         // Get user
         var user = Meteor.users.findOne(task.assignedId);
@@ -25,6 +38,34 @@ Meteor.methods({
         Meteor.call('sendEmail', emailData);
 
     },
+    createTask: function(task) {
+
+        // Create task
+        console.log(task);
+        var taskId = Tasks.insert(task);
+
+        // Send email if assigned
+        if (task.assignedId) {
+
+            Meteor.call('sendTaskEmail', taskId);
+
+        }
+
+    },
+    createDefault: function(defaultTask) {
+
+        // Get order
+        var order = DefaultTasks.find({ type: defaultTask.type, domainId: defaultTask.domainId }).count() + 1;
+        defaultTask.order = order;
+
+        console.log(defaultTask);
+
+        DefaultTasks.insert(defaultTask);
+
+    },
+    deleteDefaultTask: function(taskId) {
+        DefaultTasks.remove(taskId);
+    },
     deleteTask: function(taskId) {
         Tasks.remove(taskId);
     },
@@ -39,8 +80,7 @@ Meteor.methods({
 
         if (user.userName) {
             var assignedName = user.userName;
-        }
-        else {
+        } else {
             var assignedName = user.emails[0].address;
         }
 
@@ -53,11 +93,39 @@ Meteor.methods({
         text = SSR.render("completedTaskEmail", templateData);
 
         var emailData = {
-            to: Meteor.settings.adminUser.email,
-            subject: 'Completed task: ' + task.name,
-            text: text
+                to: Meteor.settings.adminUser.email,
+                subject: 'Completed task: ' + task.name,
+                text: text
+            }
+            // Meteor.call('sendEmail', emailData);
+
+        // Check if repeat
+        if (task.repeat) {
+
+            // Create task
+            var newTask = JSON.parse(JSON.stringify(task));
+            delete newTask._id;
+            newTask.creationDate = new Date();
+            newTask.status = 'new';
+
+            console.log(newTask);
+
+            // Set deadline
+            previousDeadline = new Date(task.deadline);
+
+            if (task.repeat == 'day') {
+                newTask.deadline = new Date(previousDeadline.getTime() + 1 * 24 * 3600 * 1000);
+            }
+            if (task.repeat == '7days') {
+                newTask.deadline = new Date(previousDeadline.getTime() + 7 * 24 * 3600 * 1000);
+            }
+
+            console.log(newTask);
+
+            // Insert new task
+            Tasks.insert(newTask);
+
         }
-        Meteor.call('sendEmail', emailData);
 
     }
 

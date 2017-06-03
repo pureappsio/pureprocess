@@ -57,6 +57,11 @@ Template.taskCreation.events({
             task.processId = $('#task-process :selected').val();
         }
 
+        // Repeat?
+        if ($('#task-repeat :selected').val() != 'no') {
+            task.repeat = $('#task-repeat :selected').val();
+        }
+
         // Attachement?
         if (Session.get('attachementId')) {
             task.attachementId = Session.get('attachementId');

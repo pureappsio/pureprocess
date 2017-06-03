@@ -11,6 +11,11 @@ Template.admin.helpers({
 
 Template.admin.events({
 
+    'click #set-user-picture': function() {
+
+        Meteor.call('setUserPicture', Session.get('userPicture'), $('#user-picture-id :selected').val());
+
+    },
     'click #add-category': function() {
 
         Meteor.call('addCategory', {

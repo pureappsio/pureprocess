@@ -1,5 +1,5 @@
 <template name="settings">
-    <h3>Settings</h3> {{#if currentUser}}
+    <h3>User Details</h3> {{#if currentUser}}
     <div class='row'>
         <div class='col-md-3'>
             <input class='form-control' id='user-name' placeholder="User name ..." value='{{userName}}'>
@@ -8,5 +8,41 @@
             <button id='set-username' class='btn btn-block btn-primary'>Set User Name</button>
         </div>
     </div>
+    <div class='row'>
+        <div class='col-md-3'>
+            {{> uploadForm fileId="userPicture"}}
+        </div>
+        <div class='col-md-2'>
+            <button id='set-picture' class='btn btn-block btn-primary'>Set User Picture</button>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-1'>
+            <img src='{{userPic}}' class='img-responsive'>
+        </div>
+    </div>
+    {{/if}} {{#if isAdmin}}
+    <h3>Time Preferences</h3>
+    <div class='row'>
+        <div class='col-md-2'>
+            <select class="form-control" id='tasks'>
+                {{#each processes}} {{> processSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-3'>
+            <select class="form-control" id='date'>
+                <option value='1'>Monday</option>
+                <option value='2'>Tuesday</option>
+                <option value='3'>Wednesday</option>
+                <option value='4'>Thursday</option>
+                <option value='5'>Friday</option>
+                <option value='6'>Saturday</option>
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <button id='set-preference' class='btn btn-block btn-primary'>Add Preference</button>
+        </div>
+    </div>
+    {{#each preferences}} {{> preference}} {{/each}}
     {{/if}}
 </template>

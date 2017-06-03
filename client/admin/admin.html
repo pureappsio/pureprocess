@@ -15,6 +15,20 @@
             <button id='set-user-name' class='btn btn-block btn-primary'>Set User Name</button>
         </div>
     </div>
+    <h3>Set User Picture</h3>
+    <div class='row'>
+        <div class='col-md-3'>
+            <select id='user-picture-id' class='form-control'>
+                {{#each users}} {{> userSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-3'>
+            {{> uploadForm fileId="userPicture"}}
+        </div>
+        <div class='col-md-2'>
+            <button id='set-user-picture' class='btn btn-block btn-primary'>Set User Picture</button>
+        </div>
+    </div>
     <h3>Set Operators</h3>
     <div class='row'>
         <div class='col-md-3'>
@@ -26,7 +40,7 @@
             <button id='set-operator' class='btn btn-block btn-primary'>Set Operator</button>
         </div>
     </div>
-    {{> domains}}
+  
     <h3>Process Categories</h3>
     <div class='row'>
         <div class='col-md-3'>

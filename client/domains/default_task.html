@@ -1,0 +1,22 @@
+<template name="defaultTask">
+    <div class='row'>
+        <div class='col-md-1'>
+            {{order}}
+        </div>
+        <div class='col-md-2'>
+            {{type}}
+        </div>
+        <div class='col-md-2'>
+            {{processName}}
+        </div>
+        <div class='col-md-2'>
+            {{#if assignedPic}}<img class='img-responsive picture-task' src='{{assignedPic}}'>{{/if}}{{assignedTo}}
+        </div>
+        <div class='col-md-2'>
+            {{date}}
+        </div>
+        <div class='col-md-1'>
+            <i class="fa fa-trash fa-delete task-delete" aria-hidden="true"></i>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,6 @@
+<template name="domainIdeas">
+	{{#if areIdeas}}
+	<h3>{{name}}</h3>
+	{{/if}}
+    {{#each ideas}} {{> idea}} {{/each}}
+</template>

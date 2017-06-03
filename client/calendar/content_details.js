@@ -14,7 +14,7 @@ Template.contentDetails.helpers({
 
     },
     tasks: function() {
-        return Tasks.find({ contentId: this._id });
+        return Tasks.find({ contentId: this._id }, { sort: { order: 1 } });
     }
 
 });
@@ -40,6 +40,18 @@ Template.contentDetails.onRendered(function() {
 
         Session.set('contentId', this.data._id);
         Session.set('domainId', this.data.domain);
+
+        // taskId = this.data._id;
+        // deadline = this.data.date;
+
+        // // Countdown
+        // $('.datetimepicker').datetimepicker({
+        //     defaultDate: deadline
+        // }).on('dp.change', function(e) {
+        //     var date = e.date;
+        //     date = (e.date).toDate();
+        //     Meteor.call('changeContentDate', date, taskId);
+        // });
 
     }
 

@@ -45,6 +45,12 @@ Meteor.methods({
         console.log(userId);
         Meteor.users.update(userId, { $set: { userName: userName } });
 
+    },
+    setUserPicture: function(pictureId, userId) {
+
+        console.log(pictureId);
+
+        Meteor.users.update(userId, { $set: { pictureId: pictureId } });
 
     },
     createDomain: function(domain) {

@@ -1,0 +1,23 @@
+<template name="ideas">
+    <div class='row'>
+        <div class='col-md-3'>
+            <input class="form-control" id='idea-name' placeholder="New idea name ...">
+        </div>
+        <div class='col-md-2'>
+            <select class='form-control' id='idea-domain'>
+                {{#each domains}} {{> domainSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <select class="form-control" id='idea-type'>
+                <option value='article'>Article</option>
+                <option value='video'>Video</option>
+                <option value='podcast'>Podcast</option>
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <button class='btn btn-block btn-primary' id='create-idea'>Add Idea</button>
+        </div>
+    </div>
+    {{#each domains}} {{> domainIdeas}} {{/each}}
+</template>

@@ -12,20 +12,53 @@ Template.calendarElement.helpers({
         return number;
 
     },
+    showTasks: function() {
+
+        var view = Session.get('calendarView');
+
+        if (view != 'content') {
+            return true;
+        }
+
+    },
     content: function() {
 
         var calendarDate = this.date;
 
-        // var start = new Date(calendarDate.getTime() - 24 * 3600 * 1000);
-        // var end = new Date(calendarDate.getTime() + 24 * 3600 * 1000);
-
-        // var content = Content.find({ date: { $gte: start, $lte: end } });
-
-        var content = Content.find({ $where: function() {
-                return (this.date).getDate() == calendarDate.getDate() } });
+        var content = Content.find({
+            $where: function() {
+                return (this.status == 'scheduled') && ((this.date).getDate() == calendarDate.getDate())
+            }
+        });
 
         return content;
 
+    },
+    generalTasks: function() {
+
+        var calendarDate = this.date;
+        var view = Session.get('calendarView');
+
+        if (view == 'all') {
+
+            var tasks = Tasks.find({
+                $where: function() {
+                    return ((this.status == 'new') && (this.deadline).getDate() == calendarDate.getDate())
+                }
+            });
+
+        } else {
+
+            var tasks = Tasks.find({
+                $where: function() {
+                    return ((this.assignedId == Meteor.user()._id) && (this.status == 'new') && (this.deadline).getDate() == calendarDate.getDate())
+                }
+            });
+
+
+        }
+
+        return tasks;
     }
 
 });

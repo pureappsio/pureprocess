@@ -1,9 +1,16 @@
 <template name="calendar">
     <div class='row'>
-        <div class='col-md-4'>
+        <div class='col-md-1'>
+            <select class="form-control" id='calendar-view'>
+                <option value='all'>All Tasks</option>
+                <option value='mytasks'>Only My Tasks</option>
+                <option value='content'>Only Content</option>
+            </select>
+        </div>
+        <div class='col-md-3'>
             <input class="form-control" id='content-name' placeholder="New content name ...">
         </div>
-         <div class='col-md-2'>
+        <div class='col-md-2'>
             <select class='form-control' id='content-domain'>
                 {{#each domains}} {{> domainSelect}} {{/each}}
             </select>
@@ -25,7 +32,7 @@
             <button class='btn btn-block btn-primary' id='create-content'>Add</button>
         </div>
     </div>
-    <div class='row'>
+    <div class='row row-calendar'>
         {{#each calendarTitle}} {{> calendarElementTitle}} {{/each}} {{#each calendarElements}} {{> calendarElement}} {{/each}}
     </div>
 </template>

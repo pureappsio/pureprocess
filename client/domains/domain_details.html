@@ -1,0 +1,37 @@
+<template name="domainDetails">
+    <h3>{{name}}</h3>
+    <div class='row'>
+        <div class='col-md-3'>
+            <select class="form-control" id='content-type'>
+                <option value='article'>Article</option>
+                <option value='video'>Video</option>
+                <option value='podcast'>Podcast</option>
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <select class="form-control" id='tasks'>
+                {{#each processes}} {{> processSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <select class="form-control" id='user'>
+                <option value="none">No assignment</option>
+                {{#each users}} {{> userSelect}} {{/each}}
+            </select>
+        </div>
+         <div class='col-md-2'>
+            <select class="form-control" id='date'>
+                <option value="unscheduled">Unscheduled</option>
+                <option value="sameday">Same Day</option>
+                <option value="oneday">One Day Before</option>
+                <option value="threedays">Three Days Before</option>
+                <option value="oneweek">One Week Before</option>
+                <option value="dayafter">One Day After</option>
+            </select>
+        </div>
+        <div class='col-md-3'>
+            <button id='create-default' class='btn btn-block btn-primary'>Create Default Tasks</button>
+        </div>
+    </div>
+    {{#each defaultTasks}} {{> defaultTask}} {{/each}}
+</template>

@@ -13,11 +13,35 @@ Template.contentCalendar.helpers({
         }
 
     },
+    progress: function() {
+
+        var numberTasks = Tasks.find({ contentId: this._id }).count();
+
+        if (numberTasks > 0) {
+
+            var completedTasks = Tasks.find({ status: 'completed', contentId: this._id }).count();
+
+            return (completedTasks / numberTasks * 100).toFixed(0) + '%';
+
+        }
+
+    },
     domainName: function() {
         return Domains.findOne(this.domain).name;
     },
     domainColor: function() {
         return Domains.findOne(this.domain).color;
+    },
+    assignedPic: function() {
+
+        if (this.assignedId) {
+            var user = Meteor.users.findOne(this.assignedId);
+
+            if (user.pictureId) {
+                return Files.findOne(user.pictureId).link();
+
+            }
+        }
     }
 });
 

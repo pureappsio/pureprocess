@@ -1,15 +1,46 @@
 /* CSS declarations go here */
 
+.rounded {
+   
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    background:url("http://www.electricvelocity.com.au/Upload/Blogs/smart-e-bike-side_2.jpg") center no-repeat;
+    background-size:cover;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
 .col-center {
     text-align: center;
 }
 
 .voffset50 {
-    margin-top: 50px;
+    margin-top: 50px !important;
 }
 
 .voffset30 {
-    margin-top: 30px;
+    margin-top: 30px !important;
+}
+
+.content-progress {
+    float: right;
+}
+
+.calendar-picture-task {
+    height: 22px;
+    float: left;
+    margin-right: 5px;
+}
+
+.picture-task {
+    height: 30px;
+    float: left;
+    margin-right: 10px;
 }
 
 .fa-delete {
@@ -22,22 +53,28 @@
     color: red;
 }
 
+.row-calendar {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+
 .calendar-container {
-   height: 175px;
-   border-right: 1px solid black;
-   border-bottom: 1px solid black;
-   padding: 0;
-   margin: 0;
+    min-height: 175px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 0;
+    margin: 0;
 }
 
 .calendar-container-title {
-   height: 50px;
-   border-right: 1px solid black;
-   border-bottom: 1px solid black;
-   border-top: 1px solid black;
-   padding: 2px;
-   padding-left: 5px;
-   margin: 0;
+    height: 50px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding: 2px;
+    padding-left: 5px;
+    margin: 0;
 }
 
 .calendar-title {
@@ -54,8 +91,11 @@
 .calendar-content {
     margin-top: 5px;
     padding: 5px;
-    background-color: #eeeeee;
     cursor: pointer;
+}
+
+.background-generic {
+    background-color: #eeeeee;
 }
 
 .background-video {
@@ -157,14 +197,13 @@ video {
     border: 2px solid lightgray;
 }
 
-.completed-task .check-task:hover  {
+.completed-task .check-task:hover {
     border: 2px solid lightgray;
     cursor: default;
     color: lightgray;
 }
 
 .check-task {
-
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -173,7 +212,6 @@ video {
     line-height: 35px;
     text-align: center;
     display: inline-block;
-
 }
 
 .check-task:hover {
