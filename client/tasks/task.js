@@ -5,9 +5,30 @@ Template.task.helpers({
             return Procedures.findOne(this.processId).name;
         }
     },
-   
+
     deadlineDate: function() {
-        return moment(this.deadline).format('MMMM Do YYYY');
+        if (this.deadline) {
+            return moment(this.deadline).format('MMMM Do YYYY');
+        }
+
+    },
+    process: function() {
+
+        if (Session.get('projectId')) {
+            return false;
+        } else {
+            return true;
+        }
+
+    },
+    nameSize: function() {
+
+        if (Session.get('projectId')) {
+            return '7';
+        } else {
+            return '4'
+        }
+
     },
     assignedPic: function() {
 

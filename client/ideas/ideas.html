@@ -1,18 +1,33 @@
 <template name="ideas">
     <div class='row'>
-        <div class='col-md-3'>
+        <div class='col-md-2'>
+            <select class='form-control' id='domain-select'>
+                <option value="all">Show All Domains</option> 
+                {{#each domains}} {{> domainSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-1'></div>
+        <div class='col-md-2'>
             <input class="form-control" id='idea-name' placeholder="New idea name ...">
         </div>
+
         <div class='col-md-2'>
             <select class='form-control' id='idea-domain'>
                 {{#each domains}} {{> domainSelect}} {{/each}}
             </select>
         </div>
+
         <div class='col-md-2'>
             <select class="form-control" id='idea-type'>
                 <option value='article'>Article</option>
                 <option value='video'>Video</option>
                 <option value='podcast'>Podcast</option>
+            </select>
+        </div>
+         <div class='col-md-1'>
+            <select class='form-control' id='content-category'>
+                <option value='none'>Generic</option>
+                {{#each categories}} {{> categorySelect}} {{/each}}
             </select>
         </div>
         <div class='col-md-2'>

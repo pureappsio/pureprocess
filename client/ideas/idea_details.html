@@ -5,8 +5,22 @@
             <h3>{{title}}</h3>
         </div>
     </div>
-    {{#each notes}} {{> note}} {{/each}}
-    <div class='row voffset50'>
+    <div class='row'>
+        <div class='col-md-3'></div>
+        <div class='col-md-3'>
+            <select class='form-control' id='content-category'>
+                <option value='none'>Generic</option>
+                {{#each categories}} {{> categorySelect}} {{/each}}
+            </select>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-3'></div>
+        <div class='col-md-6'>
+            {{#each notes}} {{> note}} {{/each}}
+        </div>
+    </div>
+    <div class='row voffset30'>
         <div class='col-md-3'></div>
         <div class='col-md-6'>
             <textarea class="form-control" id='note-content'></textarea>
@@ -18,10 +32,22 @@
             <button class='btn btn-block btn-primary' id='add-note'>Add Note</button>
         </div>
     </div>
-    <div class="row voffset30">
+    <div class="row voffset50">
+        <div class='col-md-3'></div>
+        <div class='col-md-3'>
+            <div class="input-group datetimepicker">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input id='content-date' class="set-due-date form-control" type="text" />
+            </div>
+        </div>
+        <div class='col-md-3'>
+            <button class='btn btn-block btn-success' id='schedule'>Schedule</button>
+        </div>
+    </div>
+    <div class="row">
         <div class='col-md-3'></div>
         <div class='col-md-6'>
-            <a href='/ideas' class='btn btn-block btn-primary' id='add-note'>Come Back</a>
+            <a href='/ideas' class='btn btn-block btn-default'>Come Back</a>
         </div>
     </div>
 </template>

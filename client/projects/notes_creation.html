@@ -1,0 +1,20 @@
+<template name="notesCreation">
+    <div class='row voffset30'>
+        <div class='col-md-1'></div>
+        <div class='col-md-10'>
+            <textarea class="form-control" id='note-content'></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-md-1'></div>
+        <div class='col-md-10'>
+            {{> uploadForm fileId="noteAttachment"}}
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-md-1'></div>
+        <div class='col-md-10'>
+            <button class='btn btn-block btn-primary' id='add-note'>Add Note</button>
+        </div>
+    </div>
+</template>

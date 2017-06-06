@@ -10,6 +10,10 @@ Meteor.publish("userTasks", function() {
     return Tasks.find({});
 });
 
+Meteor.publish("userProjects", function() {
+    return Projects.find({});
+});
+
 Meteor.publish("userDefaultTasks", function() {
     return DefaultTasks.find({});
 });

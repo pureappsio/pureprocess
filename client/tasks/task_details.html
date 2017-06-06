@@ -35,7 +35,36 @@
             Attachement: <a href='{{fileLink}}'>Click to download the attached file</a>
         </div>
     </div>
-    {{/if}} {{#if processId}}
+    {{/if}} 
+
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <div class='text-bold'>Notes</div>
+            {{#each notes}} {{> note}} {{/each}}
+        </div>
+    </div>
+    <div class='row voffset30'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <textarea class="form-control" id='note-content'></textarea>
+            
+        </div>
+    </div>
+     <div class="row">
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            {{> uploadForm fileId="noteAttachment"}}         
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <button class='btn btn-block btn-primary' id='add-note'>Add Note</button>
+        </div>
+    </div>
+
+    {{#if processId}}
     <div class='voffset30'></div>
     {{#each steps}} {{> stepTask}} {{/each}} {{/if}}
     <div class='row'>

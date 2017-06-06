@@ -16,5 +16,6 @@ Template.tasks.onRendered(function() {
 
     Session.set('contentId', null);
     Session.set('domainId', null);
+    Session.set('projectId', null);
 
 });

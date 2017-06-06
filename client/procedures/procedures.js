@@ -20,7 +20,7 @@ Template.procedures.helpers({
         return Procedures.find({ categoryId: { $exists: false } });
     },
     categories: function() {
-        return Categories.find({});
+        return Categories.find({ type: { $exists: false } });
     }
 
 });

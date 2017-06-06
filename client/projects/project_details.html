@@ -1,0 +1,35 @@
+<template name="projectDetails">
+    <div class='row'>
+        <div class='col-md-1'></div>
+        <div class='col-md-10 col-center'>
+            <h3>{{title}}</h3>
+        </div>
+    </div>
+    <div class='row voffset30'>
+        <div class='col-md-1'></div>
+        <div class='col-md-10'>
+            {{> taskCreation}}
+        </div>
+    </div>
+    <div class='row voffset30'>
+        <div class='col-md-1'></div>
+        <div class='col-md-10'>
+            <div class='text-bold'>Tasks</div>
+            {{#each tasks}} {{> task }} {{/each}}
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-1'></div>
+        <div class='col-md-10'>
+            <div class='text-bold'>Notes</div>
+            {{#each notes}} {{> note}} {{/each}}
+        </div>
+    </div>
+    {{ > notesCreation}}
+    <div class="row">
+        <div class='col-md-3'></div>
+        <div class='col-md-6'>
+            <a href='/projects' class='btn btn-block btn-default'>Come Back</a>
+        </div>
+    </div>
+</template>

@@ -1,11 +1,14 @@
 <template name="contentCalendar">
     <div class='calendar-content background-{{type}}'>
         <div class='calendar-content-description'>
-        	{{#if assignedPic}}<img class='img-responsive calendar-picture-task' src='{{assignedPic}}'>{{/if}}<i class="fa fa-{{icon}}" aria-hidden="true"></i> {{title}} <span class='content-progress'>{{progress}}</span>
+        
+            {{#if assignedPic}}<img class='img-responsive calendar-picture-task' src='{{assignedPic}}'>{{/if}}<i class="fa fa-{{icon}}" aria-hidden="true"></i> {{title}} 
+
+            <span class='content-progress'>{{progress}}</span>
         </div>
         <div class='calendar-content-name'>
-        		<span style='background-color: {{domainColor}} !important;' class="label label-default">{{domainName}}</span>
+            <span style='background-color: {{domainColor}} !important;' class="label label-default">{{domainName}}</span>
+             <span class="label label-default">{{categoryName}}</span>
         </div>
     </div>
- 
 </template>

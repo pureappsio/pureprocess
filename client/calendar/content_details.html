@@ -7,6 +7,15 @@
         <div class='col-md-1'>
             <h3><i class="fa fa-{{icon}}" aria-hidden="true"></i></h3> </div>
     </div>
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-3'>
+            <select class='form-control' id='content-category'>
+                <option value='none'>Generic</option>
+                {{#each categories}} {{> categorySelect}} {{/each}}
+            </select>
+        </div>
+    </div>
     <div class='row voffset30'>
         <div class='col-md-2'></div>
         <div class='col-md-8'>
@@ -16,8 +25,17 @@
     <div class='row voffset30'>
         <div class='col-md-2'></div>
         <div class='col-md-8'>
-            Tasks
+            <div class='text-bold'>Tasks</div>
             {{#each tasks}} {{> task}} {{/each}}
+        </div>
+    </div>
+    <div class='row voffset30'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            {{#if areNotes}}
+            <div class='text-bold'>Notes</div>
+            {{/if}}
+            {{#each notes}} {{> note}} {{/each}}
         </div>
     </div>
     <div class='row voffset30'>

@@ -8,7 +8,8 @@ Tracker.autorun(function() {
     Meteor.subscribe('userContent');
     Meteor.subscribe('userDomains');
     Meteor.subscribe('userPreferences');
-Meteor.subscribe('userNotes');
+    Meteor.subscribe('userNotes');
+    Meteor.subscribe('userProjects');
     Meteor.subscribe('userData');
     Meteor.subscribe('allUsers');
 

@@ -1,9 +1,9 @@
 <template name="note">
     <div class='row'>
-        <div class='col-md-3'></div>
-        <div class='col-md-5 '>
+        <div class='col-md-11'>
             <div class='text-bold'>{{#if assignedPic}}<img class='rounded img-responsive picture-task' src='{{assignedPic}}'>{{/if}}{{assignedTo}}</div>
-            <div>{{content}}</div>
+            {{#if content}}<div class='note-content'>{{{content}}}</div>{{/if}}
+            {{#if attachmentId}}<img src='{{imageLink}}' class='img-note img-responsive'>{{/if}}
         </div>
         <div class='col-md-1'>
             <i class="fa fa-trash fa-delete note-delete" aria-hidden="true"></i>

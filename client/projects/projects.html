@@ -1,0 +1,16 @@
+<template name="projects">
+    <div class='row'>
+        <div class='col-md-2'>
+            <input class="form-control" id='project-name' placeholder="New project name ...">
+        </div>
+        <div class='col-md-2'>
+            <select class='form-control' id='project-domain'>
+                {{#each domains}} {{> domainSelect}} {{/each}}
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <button class='btn btn-block btn-primary' id='create-project'>Add Project</button>
+        </div>
+    </div>
+    {{#each domains}} {{> domainProjects}} {{/each}}
+</template>

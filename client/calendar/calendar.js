@@ -10,6 +10,13 @@ Template.calendar.events({
             status: 'scheduled'
         }
 
+        // Category ?
+        var category = $('#content-category :selected').val();
+
+        if (category != 'none') {
+            content.categoryId = category;
+        }
+
         Meteor.call('createContent', content);
 
     },
@@ -37,6 +44,11 @@ Template.calendar.helpers({
             { title: 'FRI' },
             { title: 'SAT' },
         ]
+
+    },
+    categories: function() {
+
+        return Categories.find({ type: 'content' });
 
     },
     calendarElements: function() {
@@ -78,7 +90,9 @@ Template.calendar.helpers({
 
 Template.calendar.onRendered(function() {
 
-    Session.set('calendarView', 'all');
+    // if (!Session.get('calendarView')) {
+    //     Session.set('calendarView', 'all');
+    // }
 
     // Countdown
     $('.datetimepicker').datetimepicker();

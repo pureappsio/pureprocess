@@ -1,14 +1,25 @@
 <template name="idea">
     <div class='row'>
-        <div class='col-md-1'>
-            {{type}}
+        <div class='col-md-2'>
+            <span class="label label-default label-idea background-{{type}}">{{formatType type}} {{categoryName}}</span>
         </div>
-        <div class='col-md-4'>
+        <div class='col-md-5'>
             <a href='/ideas/{{_id}}'>{{title}}</a>
+        </div>
+        <div class='col-md-2'>
+            <div class="input-group datetimepicker">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input id='content-date-{{_id}}' class="set-due-date form-control" type="text" />
+            </div>
+        </div>
+        <div class='col-md-1'>
+            <button class='btn btn-block btn-success schedule-idea'>Schedule</button>
+        </div>
+        <div class='col-md-1'>
+            {{notes}} notes
         </div>
         <div class='col-md-1'>
             <i class="fa fa-trash fa-delete idea-delete" aria-hidden="true"></i>
         </div>
     </div>
-   
 </template>

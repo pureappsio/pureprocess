@@ -19,23 +19,26 @@ Meteor.methods({
         // Get task
         var task = Tasks.findOne(taskId);
 
-        // Get user
-        var user = Meteor.users.findOne(task.assignedId);
+        if (task.deadline) {
+            // Get user
+            var user = Meteor.users.findOne(task.assignedId);
 
-        // Notify user
-        SSR.compileTemplate('newTaskEmail', Assets.getText('task_email.html'));
-        templateData = {
-            taskLink: Meteor.absoluteUrl() + taskId,
-            taskName: task.name
-        }
-        text = SSR.render("newTaskEmail", templateData);
+            // Notify user
+            SSR.compileTemplate('newTaskEmail', Assets.getText('task_email.html'));
+            templateData = {
+                taskLink: Meteor.absoluteUrl() + taskId,
+                taskName: task.name
+            }
+            text = SSR.render("newTaskEmail", templateData);
 
-        var emailData = {
-            to: user.emails[0].address,
-            subject: 'A new task was assigned to you',
-            text: text
+            var emailData = {
+                to: user.emails[0].address,
+                subject: 'A new task was assigned to you',
+                text: text
+            }
+            
+            Meteor.call('sendEmail', emailData);
         }
-        Meteor.call('sendEmail', emailData);
 
     },
     createTask: function(task) {
@@ -55,7 +58,11 @@ Meteor.methods({
     createDefault: function(defaultTask) {
 
         // Get order
-        var order = DefaultTasks.find({ type: defaultTask.type, domainId: defaultTask.domainId }).count() + 1;
+        var query = { type: defaultTask.type, domainId: defaultTask.domainId };
+        if (defaultTask.categoryId) {
+            query.categoryId = defaultTask.categoryId;
+        }
+        var order = DefaultTasks.find(query).count() + 1;
         defaultTask.order = order;
 
         console.log(defaultTask);

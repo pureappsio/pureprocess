@@ -17,9 +17,21 @@
         </div>
         <div class='col-md-2'>
             <select class="form-control" id='content-type'>
-                <option value='article'>Article</option>
+                <option value='article'>
+                    <!-- Generic -->Article</option>
+                <!--         <option value='tutorial'>Tutorial</option>
+                <option value='review'>Product Review</option>
+                <option value='comparison'>Product Comparison</option -->>
+                <!--                 <option value='report'>Income Report</option>
+ -->
                 <option value='video'>Video</option>
                 <option value='podcast'>Podcast</option>
+            </select>
+        </div>
+        <div class='col-md-1'>
+            <select class='form-control' id='content-category'>
+                <option value='none'>Generic</option>
+                {{#each categories}} {{> categorySelect}} {{/each}}
             </select>
         </div>
         <div class='col-md-2'>
@@ -28,7 +40,7 @@
                 <input id='content-date' class="form-control" type="text" />
             </div>
         </div>
-        <div class='col-md-2'>
+        <div class='col-md-1'>
             <button class='btn btn-block btn-primary' id='create-content'>Add</button>
         </div>
     </div>

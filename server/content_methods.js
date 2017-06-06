@@ -1,6 +1,19 @@
 Meteor.methods({
 
-    removeNote: function(noteId){
+    changeContentCategory: function(contentId, categoryId) {
+
+        if (categoryId == 'none') {
+
+            Content.update(contentId, { $unset: { categoryId: "" } });
+
+        } else {
+            Content.update(contentId, { $set: { categoryId: categoryId } });
+        }
+
+        console.log(Content.findOne(contentId));
+
+    },
+    removeNote: function(noteId) {
 
         Notes.remove(noteId);
 
@@ -24,17 +37,37 @@ Meteor.methods({
         Content.insert(idea);
 
     },
-    createContent: function(content) {
+    scheduleIdea: function(contentId, date) {
 
-        // Create content
+        console.log(contentId);
+        console.log(date);
+
+        // Update to scheduled & set date
+        Content.update(contentId, { $set: { status: 'scheduled', date: new Date(date) } });
+
+        // Create tasks
+        Meteor.call('createContentTasks', contentId);
+
+    },
+    createContentTasks: function(contentId) {
+
+        // Get content
+        var content = Content.findOne(contentId);
+
         console.log(content);
-        var contentId = Content.insert(content);
 
         // Check if there are default task for this
-        if (DefaultTasks.findOne({ domainId: content.domain, type: content.type })) {
+        var query = { domainId: content.domain, type: content.type };
+        if (content.categoryId) {
+            query.categoryId = content.categoryId;
+        }
+
+        console.log(query);
+
+        if (DefaultTasks.findOne(query)) {
 
             // Get all default tasks
-            var tasks = DefaultTasks.find({ domainId: content.domain, type: content.type }).fetch();
+            var tasks = DefaultTasks.find(query).fetch();
 
             for (i in tasks) {
 
@@ -114,6 +147,16 @@ Meteor.methods({
             }
 
         }
+
+    },
+    createContent: function(content) {
+
+        // Create content
+        console.log(content);
+        var contentId = Content.insert(content);
+
+        // Create tasks
+        Meteor.call('createContentTasks', contentId);
 
     },
     deleteContent: function(contentId) {

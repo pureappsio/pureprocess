@@ -1,14 +1,27 @@
 /* CSS declarations go here */
 
+.progress {
+    height: 20px;
+}
+
+.bar {
+    line-height: 20px;
+}
+
+.progress-bar {
+    font-size: 20px;
+}
+
+.img-note {
+    max-height: 200px;
+}
+
 .rounded {
-   
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     border-radius: 50%;
-    background:url("http://www.electricvelocity.com.au/Upload/Blogs/smart-e-bike-side_2.jpg") center no-repeat;
-    background-size:cover;
 }
 
 .text-bold {
@@ -94,20 +107,29 @@
     cursor: pointer;
 }
 
+.note-content {
+    margin-top: 10px;
+}
+
+.label-idea {
+    color: black;
+    border: 1px solid black;
+}
+
 .background-generic {
     background-color: #eeeeee;
 }
 
 .background-video {
-    background-color: #ffe6e6;
+    background-color: #ffe6e6 !important;
 }
 
 .background-article {
-    background-color: #e6f2ff;
+    background-color: #e6f2ff !important;
 }
 
 .background-podcast {
-    background-color: #e6ffe6;
+    background-color: #e6ffe6 !important;
 }
 
 .calendar-content-name {

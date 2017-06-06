@@ -38,11 +38,15 @@ Template.taskCreation.events({
         // Task
         var task = {
             name: $('#task-name').val(),
-            deadline: new Date($('#task-date').val()),
             creationDate: new Date(),
             assignedId: $('#task-user :selected').val(),
             userId: Meteor.user()._id,
             status: 'new'
+        }
+
+        // Deadline
+        if ($('#task-date').val() != '') {
+            task.deadline = new Date($('#task-date').val());
         }
 
         // Domain
@@ -50,6 +54,11 @@ Template.taskCreation.events({
             task.domainId = Session.get('domainId');
         } else {
             task.domainId = $('#domain-id :selected').val();
+        }
+
+        // Project
+        if (Session.get('projectId')) {
+            task.projectId = Session.get('projectId');
         }
 
         // Process?

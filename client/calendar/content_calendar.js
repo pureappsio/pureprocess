@@ -13,6 +13,13 @@ Template.contentCalendar.helpers({
         }
 
     },
+    categoryName: function() {
+
+        if (this.categoryId) {
+            return Categories.findOne(this.categoryId).name;
+        }
+
+    },
     progress: function() {
 
         var numberTasks = Tasks.find({ contentId: this._id }).count();

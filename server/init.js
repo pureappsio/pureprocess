@@ -9,4 +9,8 @@ Meteor.startup(function() {
     // Set all content to new
     // Content.update({}, { $set: { status: 'scheduled' } }, { multi: true });
 
+    // Clear
+    // Content.remove({});
+    // Tasks.remove({});
+
 });

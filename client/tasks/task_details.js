@@ -20,12 +20,24 @@ Template.taskDetails.onRendered(function() {
 
     }
 
+    // Init
+    CKEDITOR.replace('note-content', {
+        height: '100px',
+        extraPlugins: 'autolink'
+    });
+
+    Session.set('noteAttachment', null);
+
 });
 
 Template.taskDetails.helpers({
 
     users: function() {
         return Meteor.users.find({});
+    },
+
+    notes: function() {
+        return Notes.find({ taskId: this._id });
     },
 
     processName: function() {
@@ -91,6 +103,32 @@ Template.taskDetails.helpers({
 });
 
 Template.taskDetails.events({
+
+    'click #add-note': function() {
+
+        var note = {
+            taskId: this._id,
+            date: new Date(),
+            writerId: Meteor.user()._id
+        }
+
+        // Content
+        if (CKEDITOR.instances['note-content'].getData() != '') {
+            note.content = CKEDITOR.instances['note-content'].getData();
+        }
+
+        // Attachment
+        if (Session.get('noteAttachment')) {
+            note.attachmentId = Session.get('noteAttachment');
+        }
+
+        Meteor.call('addNote', note, function() {
+
+            Session.set('noteAttachment', null);
+
+        });
+
+    },
 
     'change #assigned-id': function() {
 

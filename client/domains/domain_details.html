@@ -8,6 +8,12 @@
                 <option value='podcast'>Podcast</option>
             </select>
         </div>
+        <div class='col-md-1'>
+            <select class='form-control' id='content-category'>
+                <option value='none'>Generic</option>
+                {{#each categories}} {{> categorySelect}} {{/each}}
+            </select>
+        </div>
         <div class='col-md-2'>
             <select class="form-control" id='tasks'>
                 {{#each processes}} {{> processSelect}} {{/each}}
@@ -29,7 +35,7 @@
                 <option value="dayafter">One Day After</option>
             </select>
         </div>
-        <div class='col-md-3'>
+        <div class='col-md-2'>
             <button id='create-default' class='btn btn-block btn-primary'>Create Default Tasks</button>
         </div>
     </div>

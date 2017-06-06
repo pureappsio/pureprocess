@@ -25,24 +25,6 @@ Template.registerHelper("formatDateShort", function(date) {
     return moment(date).format('MMMM Do YYYY');
 });
 
-Template.registerHelper("formatStatus", function(status) {
-    if (status == 'open') {
-        return 'OPEN'
-    };
-    if (status == 'live') {
-        return 'LIVE'
-    };
-    if (status == 'pending') {
-        return 'PENDING'
-    };
-    if (status == 'closed') {
-        return 'CLOSED'
-    };
-    if (status == 'spam') {
-        return 'SPAM'
-    };
-});
-
 Template.registerHelper("statusLabel", function(status) {
     if (status == 'open') {
         return 'success'
@@ -62,14 +44,14 @@ Template.registerHelper("statusLabel", function(status) {
 });
 
 Template.registerHelper("formatType", function(type) {
-    if (type == 'unknown') {
-        return 'UNKNOWN';
-    } else if (type == 'lead') {
-        return 'LEAD';
-    } else if (type == 'customer') {
-        return 'CUSTOMER';
+    if (type == 'article') {
+        return 'Article';
+    } else if (type == 'video') {
+        return 'Video';
+    } else if (type == 'podcast') {
+        return 'Podcast';
     } else {
-        return 'UNKNOWN';
+        return type;
     }
 });
 
@@ -105,8 +87,7 @@ Template.registerHelper("isEdit", function() {
             if (Session.get('editMode')) {
                 if (Session.get('editMode') == true) {
                     return true;
-                }
-                else {
+                } else {
                     return false;
                 }
             }

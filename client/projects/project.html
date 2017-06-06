@@ -1,0 +1,23 @@
+<template name="project">
+    <div class='row bar'>
+        <div class='col-md-4'>
+            <a href='/projects/{{_id}}'>{{title}}</a>
+        </div>
+        <div class='col-md-1'>
+            {{tasks}} tasks
+        </div>
+        <div class='col-md-1'>
+            {{notes}} notes
+        </div>
+        <div class="col-md-4">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{progress}}%;">
+                    {{progress}}%
+                </div>
+            </div>
+        </div>
+        <div class='col-md-1'>
+            <i class="fa fa-trash fa-delete project-delete" aria-hidden="true"></i>
+        </div>
+    </div>
+</template>

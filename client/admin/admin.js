@@ -20,7 +20,16 @@ Template.admin.events({
 
         Meteor.call('addCategory', {
             name: $('#category-name').val(),
-            userId: Meteor.user()._id
+            userId: Meteor.user()._id,
+        });
+
+    },
+     'click #add-content-category': function() {
+
+        Meteor.call('addCategory', {
+            name: $('#content-category-name').val(),
+            userId: Meteor.user()._id,
+            type: 'content'
         });
 
     },

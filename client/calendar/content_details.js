@@ -15,11 +15,32 @@ Template.contentDetails.helpers({
     },
     tasks: function() {
         return Tasks.find({ contentId: this._id }, { sort: { order: 1 } });
+    },
+    notes: function() {
+        return Notes.find({ contentId: this._id });
+    },
+    areNotes: function() {
+        notes = Notes.find({ contentId: this._id }).count();
+
+        if (notes > 0) {
+            return true;
+        }
+    },
+    categories: function() {
+
+        return Categories.find({ type: 'content' });
+
     }
 
 });
 
 Template.contentDetails.events({
+
+    'change #content-category': function() {
+
+        Meteor.call('changeContentCategory', this._id, $('#content-category :selected').val());
+
+    },
 
     'click #delete-content': function() {
 
@@ -40,6 +61,14 @@ Template.contentDetails.onRendered(function() {
 
         Session.set('contentId', this.data._id);
         Session.set('domainId', this.data.domain);
+
+        // Category
+        if (this.data.categoryId) {
+            $('#content-category').val(this.data.categoryId);
+        } else {
+            $('#content-category').val('none');
+        }
+
 
         // taskId = this.data._id;
         // deadline = this.data.date;

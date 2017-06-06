@@ -10,6 +10,15 @@ Template.note.events({
 
 Template.note.helpers({
 
+    imageLink: function() {
+
+        if (this.attachmentId) {
+
+            return Files.findOne(this.attachmentId).link();
+
+        }
+
+    },
     assignedPic: function() {
 
         if (this.writerId) {

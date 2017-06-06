@@ -14,7 +14,11 @@ Template.calendarElement.helpers({
     },
     showTasks: function() {
 
-        var view = Session.get('calendarView');
+        if (Session.get('calendarView')) {
+            var view = Session.get('calendarView');
+        } else {
+            var view = 'all';
+        }
 
         if (view != 'content') {
             return true;
@@ -37,13 +41,20 @@ Template.calendarElement.helpers({
     generalTasks: function() {
 
         var calendarDate = this.date;
-        var view = Session.get('calendarView');
+
+        if (Session.get('calendarView')) {
+            var view = Session.get('calendarView');
+        } else {
+            var view = 'all';
+        }
 
         if (view == 'all') {
 
             var tasks = Tasks.find({
                 $where: function() {
-                    return ((this.status == 'new') && (this.deadline).getDate() == calendarDate.getDate())
+                    if (this.deadline) {
+                        return ((this.status == 'new') && (this.deadline).getDate() == calendarDate.getDate())
+                    }
                 }
             });
 
@@ -51,10 +62,11 @@ Template.calendarElement.helpers({
 
             var tasks = Tasks.find({
                 $where: function() {
-                    return ((this.assignedId == Meteor.user()._id) && (this.status == 'new') && (this.deadline).getDate() == calendarDate.getDate())
+                    if (this.deadline) {
+                        return ((this.assignedId == Meteor.user()._id) && (this.status == 'new') && (this.deadline).getDate() == calendarDate.getDate())
+                    }
                 }
             });
-
 
         }
 
