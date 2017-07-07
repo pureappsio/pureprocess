@@ -1,0 +1,23 @@
+<template name="references">
+    <div class="row">
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <input class="form-control" id='reference-name' placeholder="New reference name ...">
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <textarea class="form-control" id='reference-content'></textarea>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-2'>
+           
+        </div>
+        <div class='col-md-8'>
+            <button class='btn btn-block btn-primary' id='add-reference'>Add Reference</button>
+        </div>
+    </div>
+    {{#each references}} {{> reference}} {{/each}}
+</template>

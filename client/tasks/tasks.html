@@ -1,5 +1,14 @@
 <template name="tasks">
-    <h3>Tasks</h3> {{#if isAdmin}}
-    {{> taskCreation}}
-    {{/if}} {{#each domains}} {{> domainTasks}} {{/each}}
+    <h3>Tasks</h3> {{#if isAdmin}} {{> taskCreation}} {{/if}}
+    <div class="row">
+        <div class="col-md-3">
+            <select class="form-control" id='task-view'>
+                <option value="all">All Tasks by Domain</option>
+                <option value="own">All My Tasks</option>
+            </select>
+        </div>
+    </div>
+    {{#if allTasks}} {{#each domains}} {{> domainTasks}} {{/each}} {{else}} 
+
+    	{{#each tasks}} {{> task}} {{/each}} {{/if}}
 </template>

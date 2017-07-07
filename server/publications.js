@@ -6,6 +6,14 @@ Meteor.publish("userSteps", function() {
     return Steps.find({});
 });
 
+Meteor.publish("userReferences", function() {
+    return References.find({});
+});
+
+Meteor.publish("userSchedules", function() {
+    return Schedules.find({});
+});
+
 Meteor.publish("userTasks", function() {
     return Tasks.find({});
 });

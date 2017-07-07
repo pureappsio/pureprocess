@@ -11,8 +11,7 @@
             <button class='btn btn-primary btn-block edit'>Save Step</button>
             {{else}}
             <div class='step-content'>{{{content}}}</div>
-            {{/if}}
-            {{#if videoUrl}}
+            {{/if}} {{#if videoUrl}}
             <video id='video-step-{{_id}}' class="video-js vjs-16-9 vjs-big-play-centered" preload="auto" controls>
                 <source src="{{videoUrl}}" type="video/mp4" />
             </video>
@@ -20,7 +19,18 @@
         </div>
         {{#if isAdmin}}
         <div class='col-md-1'>
-            <button class='btn btn-danger step-delete'>X</button>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                
+                <button class='btn btn-default step-up'>
+                    <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
+                </button>
+                <button class='btn btn-default step-down'>
+                    <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+                </button>
+                <button class='btn btn-danger step-delete'>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
         {{/if}}
     </div>

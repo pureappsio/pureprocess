@@ -5,6 +5,16 @@ Template.step.events({
         Meteor.call('deleteStep', this._id);
 
     },
+    'click .step-up': function() {
+
+        Meteor.call('changeStepOrder', this._id, -1);
+
+    },
+    'click .step-down': function() {
+
+        Meteor.call('changeStepOrder', this._id, 1);
+
+    },
     'click .edit': function() {
 
         Meteor.call('editStep', this._id, 'content', $('#step-content-' + this._id).summernote('code'));

@@ -5,6 +5,8 @@ Template.taskDetails.onRendered(function() {
         taskId = this.data._id;
         deadline = this.data.deadline;
 
+        console.log(deadline);
+
         // Countdown
         $('.datetimepicker').datetimepicker({
             defaultDate: deadline
@@ -48,7 +50,7 @@ Template.taskDetails.helpers({
     contentName: function() {
 
         if (this.contentId) {
-            return '(' + Content.findOne(this.contentId).title + ')';
+            return Content.findOne(this.contentId).title;
         }
 
     },
@@ -56,7 +58,7 @@ Template.taskDetails.helpers({
         return Files.findOne(this.attachementId).link();
     },
     steps: function() {
-        return Steps.find({ processId: this.processId });
+        return Steps.find({ processId: this.processId }, { sort: { order: 1 } });
     },
     deadlineDate: function() {
         return moment(this.deadline).format('MMMM Do YYYY');

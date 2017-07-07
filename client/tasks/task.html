@@ -1,21 +1,23 @@
 <template name="task">
     <div class='row {{completedColor}}'>
         <div class='col-md-{{nameSize}}'>
-            <div class='check-task'><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </div> <div class='task-name'><a href='/tasks/{{_id}}'>{{name}}</a></div>
+            <div class='check-task'><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </div>
+            <div class='task-name'><a href='/tasks/{{_id}}'>{{name}} {{contentName}}</a></div>
         </div>
         {{#if process}}
         <div class='col-md-3'>
-            {{#if processId}} 
-            <a href='/processes/{{processId}}'>{{processName}}</a>
-            {{/if}}
+            {{#if processId}}
+            <a href='/processes/{{processId}}'>{{processName}}</a> {{/if}}
         </div>
         {{/if}}
         <div class='col-md-2'>
             {{deadlineDate}} {{#if repeat}}<i class="fa fa-repeat" aria-hidden="true"></i>{{/if}}
         </div>
+        {{#if noFilter}}
         <div class='col-md-2'>
             {{#if assignedPic}}<img class='rounded img-responsive picture-task' src='{{assignedPic}}'>{{/if}}{{assignedTo}}
         </div>
+        {{/if}}
         {{#if isAdmin}}
         <div class='col-md-1'>
             <i class="fa fa-trash fa-delete task-delete" aria-hidden="true"></i>

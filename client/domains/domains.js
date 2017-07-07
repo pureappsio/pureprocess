@@ -8,6 +8,11 @@ Template.domains.helpers({
 
 Template.domains.events({
 
+    'click #check': function() {
+
+        Meteor.call('verifySchedule');
+
+    },
     'click #create-domain': function() {
         var domain = {
             userId: Meteor.user()._id,

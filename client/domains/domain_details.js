@@ -13,11 +13,28 @@ Template.domainDetails.helpers({
 
         return Categories.find({ type: 'content' });
 
+    },
+    schedules: function() {
+        return Schedules.find({ domainId: this._id });
     }
 
 });
 
 Template.domainDetails.events({
+
+    'click #create-schedule': function() {
+
+        var schedule = {
+            number: $('#schedule-number :selected').val(),
+            period: $('#schedule-period :selected').val(),
+            type: $('#schedule-type :selected').val(),
+            domainId: this._id,
+            userId: Meteor.user()._id,
+        }
+
+        Meteor.call('addSchedule', schedule);
+
+    },
 
     'click #create-default': function() {
 

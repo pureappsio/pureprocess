@@ -13,6 +13,10 @@ Tracker.autorun(function() {
     Meteor.subscribe('userData');
     Meteor.subscribe('allUsers');
 
+    Meteor.subscribe('userSchedules');
+
+    Meteor.subscribe('userReferences');
+
     Meteor.subscribe('userIntegrations');
 
     Meteor.subscribe('allFiles');

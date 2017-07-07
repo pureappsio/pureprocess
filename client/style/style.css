@@ -1,5 +1,9 @@
 /* CSS declarations go here */
 
+.col-centered {
+    text-align: center;
+}
+
 .progress {
     height: 20px;
 }
@@ -203,6 +207,14 @@ video {
     color: lightgray;
 }
 
+.today-task {
+    color: #428bca;
+}
+
+.today-task a {
+    color: #428bca;
+}
+
 .late-task {
     color: red;
 }
@@ -213,6 +225,18 @@ video {
 
 .late-task .check-task {
     border: 2px solid red;
+}
+
+.default-task {
+    color: black;
+}
+
+.default-task a {
+    color: black;
+}
+
+.today-task .check-task {
+    border: 2px solid #428bca;
 }
 
 .completed-task .check-task {

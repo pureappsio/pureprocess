@@ -10,6 +10,12 @@
     <div class='row'>
         <div class='col-md-2'></div>
         <div class='col-md-3'>
+            <div class="input-group contentdatepicker">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input id='content-date' class="set-due-date form-control" type="text" />
+            </div>
+        </div>
+        <div class='col-md-3'>
             <select class='form-control' id='content-category'>
                 <option value='none'>Generic</option>
                 {{#each categories}} {{> categorySelect}} {{/each}}
@@ -34,8 +40,7 @@
         <div class='col-md-8'>
             {{#if areNotes}}
             <div class='text-bold'>Notes</div>
-            {{/if}}
-            {{#each notes}} {{> note}} {{/each}}
+            {{/if}} {{#each notes}} {{> note}} {{/each}}
         </div>
     </div>
     <div class='row voffset30'>

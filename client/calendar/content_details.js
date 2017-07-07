@@ -69,18 +69,17 @@ Template.contentDetails.onRendered(function() {
             $('#content-category').val('none');
         }
 
+        contentId = this.data._id;
+        contentDate = new Date(this.data.date);
 
-        // taskId = this.data._id;
-        // deadline = this.data.date;
-
-        // // Countdown
-        // $('.datetimepicker').datetimepicker({
-        //     defaultDate: deadline
-        // }).on('dp.change', function(e) {
-        //     var date = e.date;
-        //     date = (e.date).toDate();
-        //     Meteor.call('changeContentDate', date, taskId);
-        // });
+        // Date
+        $('.contentdatepicker').datetimepicker({
+            defaultDate: contentDate
+        }).on('dp.change', function(e) {
+            var date = e.date;
+            date = (e.date).toDate();
+            Meteor.call('changeContentDate', date, contentId);
+        });
 
     }
 

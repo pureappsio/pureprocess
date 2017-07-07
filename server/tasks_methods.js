@@ -20,25 +20,36 @@ Meteor.methods({
         var task = Tasks.findOne(taskId);
 
         if (task.deadline) {
-            // Get user
-            var user = Meteor.users.findOne(task.assignedId);
 
-            // Notify user
-            SSR.compileTemplate('newTaskEmail', Assets.getText('task_email.html'));
-            templateData = {
-                taskLink: Meteor.absoluteUrl() + taskId,
-                taskName: task.name
-            }
-            text = SSR.render("newTaskEmail", templateData);
+            // Build email data
+            var emailData = Meteor.call('generateEmailData', task)
 
-            var emailData = {
-                to: user.emails[0].address,
-                subject: 'A new task was assigned to you',
-                text: text
-            }
-            
+            // Send
             Meteor.call('sendEmail', emailData);
+
         }
+
+    },
+    generateEmailData: function(task) {
+
+        // Get user
+        var user = Meteor.users.findOne(task.assignedId);
+
+        // Notify user
+        SSR.compileTemplate('newTaskEmail', Assets.getText('task_email.html'));
+        templateData = {
+            taskLink: Meteor.absoluteUrl() + 'tasks/' + task._id,
+            taskName: task.name
+        }
+        text = SSR.render("newTaskEmail", templateData);
+
+        var emailData = {
+            to: user.emails[0].address,
+            subject: 'A new task was assigned to you',
+            text: text
+        }
+
+        return emailData;
 
     },
     createTask: function(task) {
@@ -100,11 +111,10 @@ Meteor.methods({
         text = SSR.render("completedTaskEmail", templateData);
 
         var emailData = {
-                to: Meteor.settings.adminUser.email,
-                subject: 'Completed task: ' + task.name,
-                text: text
-            }
-            // Meteor.call('sendEmail', emailData);
+            to: Meteor.settings.adminUser.email,
+            subject: 'Completed task: ' + task.name,
+            text: text
+        }
 
         // Check if repeat
         if (task.repeat) {

@@ -13,6 +13,7 @@ Template.projectDetails.onRendered(function() {
 
     if (this.data) {
 
+        Session.set('contentId', null);
         Session.set('projectId', this.data._id);
         Session.set('domainId', this.data.domain);
 

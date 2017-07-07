@@ -6,6 +6,25 @@ Template.task.helpers({
         }
     },
 
+    noFilter: function() {
+
+        if (Session.get('tasksView')) {
+            if (Session.get('tasksView') == 'all') {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+
+    },
+    contentName: function() {
+        if (this.contentId) {
+            return '(' + Content.findOne(this.contentId).title + ')';
+        }
+    },
+
     deadlineDate: function() {
         if (this.deadline) {
             return moment(this.deadline).format('MMMM Do YYYY');
@@ -25,6 +44,12 @@ Template.task.helpers({
 
         if (Session.get('projectId')) {
             return '7';
+        } else if (Session.get('tasksView')) {
+            if (Session.get('tasksView') == 'all') {
+                return '4';
+            } else {
+                return '6';
+            }
         } else {
             return '4'
         }
@@ -66,10 +91,16 @@ Template.task.helpers({
             // Check if late 
             var now = new Date();
             var diff = now.getTime() - (this.deadline).getTime();
-            if (diff > 0) {
 
+            if ((this.deadline).getDate() == now.getDate() && (this.deadline).getMonth() == now.getMonth()) {
+
+                return 'today-task';
+
+            } else if (diff > 0) {
                 return 'late-task';
 
+            } else {
+                return 'default-task';
             }
         }
 

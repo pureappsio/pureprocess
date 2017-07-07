@@ -1,5 +1,9 @@
 <template name="domainDetails">
-    <h3>{{name}}</h3>
+    <div class='row'>
+        <div class='col-md-12 col-centered'>
+            <h2>{{name}}</h2></div>
+    </div>
+    <h3>Default Tasks</h3>
     <div class='row'>
         <div class='col-md-3'>
             <select class="form-control" id='content-type'>
@@ -25,7 +29,7 @@
                 {{#each users}} {{> userSelect}} {{/each}}
             </select>
         </div>
-         <div class='col-md-2'>
+        <div class='col-md-2'>
             <select class="form-control" id='date'>
                 <option value="unscheduled">Unscheduled</option>
                 <option value="sameday">Same Day</option>
@@ -40,4 +44,39 @@
         </div>
     </div>
     {{#each defaultTasks}} {{> defaultTask}} {{/each}}
+    <h3>Content Schedule</h3>
+    <div class='row'>
+        <div class='col-md-3'>
+            <select class="form-control" id='schedule-number'>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+        <div class='col-md-3'>
+            <select class="form-control" id='schedule-type'>
+                <option value='article'>Article</option>
+                <option value='video'>Video</option>
+                <option value='podcast'>Podcast</option>
+            </select>
+        </div>
+        <div class='col-md-3'>
+            <select class="form-control" id='schedule-period'>
+                <option value="day">per day</option>
+                <option value="week">per week</option>
+                <option value="2weeks">every 2 weeks</option>
+                <option value="month">per month</option>
+            </select>
+        </div>
+        <div class='col-md-2'>
+            <button id='create-schedule' class='btn btn-block btn-primary'>Create Schedule</button>
+        </div>
+    </div>
+    {{#each schedules}} {{> schedule}} {{/each}}
+    <div class='row voffset50'>
+        <div class='col-md-3'>
+        </div>
+        <div class='col-md-6'>
+            <a href='/domains' class='btn btn-block btn-default'>Come Back</a>
+        </div>
+    </div>
 </template>

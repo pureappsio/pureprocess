@@ -77,7 +77,7 @@ Template.processDetails.helpers({
     },
 
     steps: function() {
-        return Steps.find({ processId: this._id });
+        return Steps.find({ processId: this._id }, { sort: { order: 1 } });
     }
 
 });

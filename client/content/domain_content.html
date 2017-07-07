@@ -1,0 +1,4 @@
+<template name="domainContent">
+    {{#if areContent}}
+    <h3>{{name}}</h3> {{/if}} {{#each content}} {{> contentListing}} {{/each}}
+</template>
