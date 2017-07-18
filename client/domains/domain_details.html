@@ -3,6 +3,15 @@
         <div class='col-md-12 col-centered'>
             <h2>{{name}}</h2></div>
     </div>
+
+    {{#autoForm collection="Domains" doc=this id="updateDomainForm" type="update" autosave=true}}
+    <fieldset>
+        {{> afQuickField name='name'}}
+        {{> afQuickField name='url'}}
+        {{> afQuickField name='filesUrl'}}
+    </fieldset>
+    {{/autoForm}}
+
     <h3>Default Tasks</h3>
     <div class='row'>
         <div class='col-md-3'>

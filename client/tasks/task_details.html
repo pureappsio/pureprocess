@@ -28,7 +28,27 @@
             {{#if processId}} Process: <a href='/processes/{{processId}}'>{{processName}}</a> {{/if}}
         </div> -->
     </div>
-    {{#if attachementId}}
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-3'>
+            Domain: {{domainName}}
+        </div>
+        <div class='col-md-3'>
+            Domain URL: <a target="_blank" href='{{domainUrl}}'>{{domainUrl}}</a>
+        </div>
+        <div class='col-md-2'>
+            Website files URL: <a target="_blank" href='{{domainFilesUrl}}'>Visit Link</a>
+        </div>
+    </div>
+    {{#if description}}
+    <div class='row voffset30'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <div class='text-bold'>Description</div>
+            <div class="voffset10">{{{description}}}</div>
+        </div>
+    </div>
+    {{/if}} {{#if attachementId}}
     <div class='row'>
         <div class='col-md-2'></div>
         <div class='col-md-8'>
@@ -39,26 +59,32 @@
     <div class='row'>
         <div class='col-md-2'></div>
         <div class='col-md-8'>
-            <div class='text-bold'>Notes</div>
+            <div class='text-bold'>
+            <span data-toggle="collapse" data-target="#noteCollapse" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fa fa-plus-square-o" aria-hidden="true"></i></span> 
+            Notes
+            </div>
             {{#each notes}} {{> note}} {{/each}}
         </div>
     </div>
-    <div class='row voffset30'>
-        <div class='col-md-2'></div>
-        <div class='col-md-8'>
-            <textarea class="form-control" id='note-content'></textarea>
+    <div id='noteCollapse' class="collapse">
+        <div class='row voffset30'>
+            <div class='col-md-2'></div>
+            <div class='col-md-8'>
+                <textarea class="form-control" id='note-content'></textarea>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class='col-md-2'></div>
-        <div class='col-md-8'>
-            {{> uploadForm fileId="noteAttachment"}}
+        <div class="row">
+            <div class='col-md-2'></div>
+            <div class='col-md-8'>
+                {{> uploadForm fileId="noteAttachment"}}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class='col-md-2'></div>
-        <div class='col-md-8'>
-            <button class='btn btn-block btn-primary' id='add-note'>Add Note</button>
+        <div class="row">
+            <div class='col-md-2'></div>
+            <div class='col-md-8'>
+                <button class='btn btn-block btn-primary' id='add-note'>Add Note</button>
+            </div>
         </div>
     </div>
     {{#if processId}}

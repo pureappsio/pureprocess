@@ -34,6 +34,15 @@ Template.taskDetails.onRendered(function() {
 
 Template.taskDetails.helpers({
 
+    domainName: function() {
+        return Domains.findOne(this.domainId).name;
+    },
+    domainUrl: function() {
+        return 'https://' + Domains.findOne(this.domainId).url;
+    },
+    domainFilesUrl: function() {
+        return Domains.findOne(this.domainId).filesUrl;
+    },
     users: function() {
         return Meteor.users.find({});
     },

@@ -23,6 +23,10 @@ Template.task.helpers({
         if (this.contentId) {
             return '(' + Content.findOne(this.contentId).title + ')';
         }
+
+        if (this.projectId) {
+            return '(' + Projects.findOne(this.projectId).title + ')';
+        }
     },
 
     deadlineDate: function() {

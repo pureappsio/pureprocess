@@ -49,6 +49,11 @@ Template.taskCreation.events({
             task.deadline = new Date($('#task-date').val());
         }
 
+        // Deadline
+        if ($('#task-description').val() != '') {
+            task.description = $('#task-description').val();
+        }
+
         // Domain
         if (Session.get('domainId')) {
             task.domainId = Session.get('domainId');
