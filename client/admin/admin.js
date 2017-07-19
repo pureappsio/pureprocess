@@ -16,6 +16,11 @@ Template.admin.events({
         Meteor.call('setUserPicture', Session.get('userPicture'), $('#user-picture-id :selected').val());
 
     },
+    'click #set-user-password': function() {
+
+        Meteor.call('setUserPassword', $('#user-password').val(), $('#user-password-id :selected').val());
+
+    },
     'click #add-category': function() {
 
         Meteor.call('addCategory', {
@@ -24,7 +29,7 @@ Template.admin.events({
         });
 
     },
-     'click #add-content-category': function() {
+    'click #add-content-category': function() {
 
         Meteor.call('addCategory', {
             name: $('#content-category-name').val(),
